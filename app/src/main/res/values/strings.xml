@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Khanan Soft</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Kaushal Kishore</string>
+    <string name="nav_header_subtitle">Dispatch Point User</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_new_challan">Generate eChallan</string>
+    <string name="menu_logOut">Logout</string>
+    <string name="menu_Profile">Profile</string>
+    <string name="menu_change_password">Change Password</string>
+    <string name="menu_report">View Report </string>
+
+    <string name="loading">Loading…</string>
+    <string name="hint_user_id">Enter User Id</string>
+    <string name="hint_password">Enter Password</string>
+    <string name="btn_log_in">Log In</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="authenticating">Authenticating …</string>
+    <string name="authentication_failed">Authentication failed …</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="services_provided_by_nic_bihar">Services provided by: NIC Bihar</string>
+    <string name="user_id">User ID</string>
+    <string name="password">Password</string>
+    <string name="app_version">App Version :</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="enter_registered_mobile_number">Enter Registered Mobile Number</string>
+    <string name="get_password">Get Password</string>
+
+
+    <string name="loading_data">Loading Data…</string>
+
+    //-------------------------eChallan Pages Strings
+    --------------------------Start------------------------
+    <string name="generate_echallan">Generate eChallan</string>
+    <string name="disrtict_mining_details">Disrtict Mining Details</string>
+
+    <string name="total_sale_price"><font color="#416595">Total Sale Price / कुल बिक्री मूल्य</font><font color="#C70039"> [*]</font></string>
+    <string name="sale_price_per_mt_in_rs_mt"><font color="#416595">Sale Price(Per MT (in Rs.)) / बिक्री मूल्य (MT (रुपये में))</font><font color="#C70039"> [*]</font></string>
+    <string name="allotment_invoice_no"><font color="#416595">Allotment/Invoice No./ आवंटन नंबर</font><font color="#C70039"> [*]</font></string>
+    <string name="vehicle_type"><font color="#416595">Vehicle Type / वाहन का प्रकार</font><font color="#C70039"> [*]</font></string>
+    <string name="vehicle_no"><font color="#416595">Vehicle No / वाहन नंबर</font><font color="#C70039"> [*]</font></string>
+    <string name="transporter_name"><font color="#416595">Transporter Name / वाहन मालिक का नाम</font><font color="#C70039"> [*]</font></string>
+    <string name="transporter_s_mobile_no"><font color="#416595">Transporter\'s Mobile No / ट्रांसपोर्टर का मोबाइल नंबर</font><font color="#C70039"> [*]</font></string>
+    <string name="driver_name"><font color="#416595">Driver Name / चालक का नाम</font><font color="#C70039"> [*]</font></string>
+    <string name="driver_mobile_no"><font color="#416595">Driver Mobile No / चालक मोबाइल नंबर</font><font color="#C70039"> [*]</font></string>
+    <string name="driver_address"><font color="#416595">Driver Address / चालक का पता</font><font color="#C70039"> [*]</font></string>
+    <string name="mineral_weight_mt"><font color="#416595">Mineral Weight / खनिज भार (MT )</font><font color="#C70039"> [*]</font></string>
+    <string name="state"><font color="#416595">State/राज्य</font><font color="#C70039"> [*]</font></string>
+    <string name="district"><font color="#416595">District/जिला</font><font color="#C70039"> [*]</font></string>
+    <string name="block"><font color="#416595">Block/प्रखंड</font><font color="#C70039"> [*]</font></string>
+    <string name="consignee_name"><font color="#416595">Consignee Name / प्रेषिती का नाम</font><font color="#C70039"> [*]</font></string>
+    <string name="destination"><font color="#416595">Destination / गंतव्य</font><font color="#C70039"> [*]</font></string>
+    <string name="landmark"><font color="#416595">Landmark / सीमा चिन्ह</font><font color="#C70039"> [*]</font></string>
+    <string name="pin_code"><font color="#416595">Pin Code</font><font color="#C70039"> [*]</font></string>
+    <string name="police_station"><font color="#416595">Police Station /थाना</font><font color="#C70039"> [*]</font></string>
+    <string name="consignee_mobile_no"><font color="#416595">Consignee Mobile No</font><font color="#C70039"> [*]</font></string>
+    <string name="consignee_aadhar_no"><font color="#416595">Consignee Aadhar No.</font><font color="#C70039"> [*]</font></string>
+    <string name="purpose"><font color="#416595">Purpose</font><font color="#C70039"> [*]</font></string>
+    <string name="title_activity_echallan">EChallan</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="annual_e_cap_of_ghat_first_part">Annual E-cap of ghat for the year </string>
+    <string name="annual_e_cap_of_ghat_second_part"><![CDATA[</b>  / घाट की वार्षिक ई-कैप]]></string>
+
+    //-------------------------eChallan Pages Strings
+    --------------------------END------------------------
+</resources>
