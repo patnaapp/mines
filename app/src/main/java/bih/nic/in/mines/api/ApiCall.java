@@ -6,6 +6,8 @@ import bih.nic.in.mines.entity.AllotmentDetailsRequest;
 import bih.nic.in.mines.entity.AllotmentDetailsResponse;
 import bih.nic.in.mines.entity.AllotmentListRequest;
 import bih.nic.in.mines.entity.AllotmentListResponse;
+import bih.nic.in.mines.entity.ChallanUploadRequest;
+import bih.nic.in.mines.entity.ChallanUploadResponse;
 import bih.nic.in.mines.entity.DeclarationResponse;
 import bih.nic.in.mines.entity.MiningDetailsRequest;
 import bih.nic.in.mines.entity.MiningDetailsResponse;
@@ -31,7 +33,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public class ApiCall {
-    private static final String ROOT_URL = "http://10.133.20.197/Api/";
+    //private static final String ROOT_URL = "http://10.133.20.197/Api/";
+    private static final String ROOT_URL = "http://10.133.20.157:83/Api/";
     //private static final String ROOT_URL = "http://192.168.217.111/Nirikshan_API/Api/";
 
 
@@ -75,7 +78,7 @@ public class ApiCall {
         Call<ThanaResponse> getThana(@Body GeneralRequest generalRequest);
 
         @POST("CircleByUserAutoId")
-        Call<MiningDetailsResponse> getMiningDetails(@Body MiningDetailsRequest allotmentDetailsRequest);
+        Call<MiningDetailsResponse> getMiningDetails(@Body MiningDetailsRequest miningDetailsRequest);
 
         @POST("Declaration")
         Call<DeclarationResponse> getDeclaration(@Body DeclarationRequest declarationRequest);
@@ -90,9 +93,12 @@ public class ApiCall {
         Call<AllotmentDetailsResponse> getAllotmentDetails(@Body AllotmentDetailsRequest allotmentDetailsRequest);
 
         @POST("VehicleType")
-        Call<VeichelTypeResponse> getVeichelType(@Body VeichelTypeRequest veichelTypeRequest);
+        Call<VeichelTypeResponse> getVehicleType(@Body VeichelTypeRequest veichelTypeRequest);
 
         @POST("VehicleNo")
-        Call<VeichleNoDetailsResponse> getVeichelDetails(@Body VeichleNoDetailsRequest veichleNoDetailsRequest);
+        Call<VeichleNoDetailsResponse> getVehicleDetails(@Body VeichleNoDetailsRequest veichleNoDetailsRequest);
+
+        @POST("Upload")
+        Call<ChallanUploadResponse> uploadChallan(@Body ChallanUploadRequest challanUploadRequest);
     }
 }

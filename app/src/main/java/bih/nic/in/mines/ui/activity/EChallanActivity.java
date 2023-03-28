@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,6 +50,9 @@ import bih.nic.in.mines.entity.VehicleEntity;
 import bih.nic.in.mines.entity.VeichelTypeEntity;
 import bih.nic.in.mines.entity.VeichelTypeRequest;
 import bih.nic.in.mines.entity.VeichelTypeResponse;
+import bih.nic.in.mines.entity.VeichleNoDetailsEntity;
+import bih.nic.in.mines.entity.VeichleNoDetailsRequest;
+import bih.nic.in.mines.entity.VeichleNoDetailsResponse;
 import bih.nic.in.mines.security.Encriptor;
 import bih.nic.in.mines.security.RandomString;
 import bih.nic.in.mines.utilities.CommonPref;
@@ -71,6 +76,7 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
     ArrayList<VehicleEntity> veichelArray;
 
     private String allotmentNumber = "";
+    private String veichleTypeId = "";
 
     MiningDetailsResponse miningDetailsResponse;
     AllotmentDetailsResponse allotmentDetailsResponse;
@@ -153,6 +159,58 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
                 binding.showConsigneeDetails.setImageResource(R.drawable.down_arrow_16);
             }
         });
+
+        binding.btnValidate.setOnClickListener(v -> {
+            if(binding.etVehicleNo.getText().toString().trim().length() > 7){
+                callVehicleNumberDetailsAPI(binding.etVehicleNo.getText().toString().trim());
+            }
+        });
+
+        binding.etSalePrice.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                /*int i,j;
+                if(!s.toString().equalsIgnoreCase("")) {
+                    if (binding.etMineralWeight.getText().toString().trim() != null) {
+                        if (!binding.etMineralWeight.getText().toString().trim().equalsIgnoreCase("NA")) {
+                            i = binding.etMineralWeight.getText().toString().trim() != "" ? Integer.parseInt(binding.etMineralWeight.getText().toString().trim()) : 0;
+                        } else {
+                            i = 0;
+                        }
+                    } else {
+                        i = 0;
+                    }
+                }else{
+                    i = 0;
+                }
+
+                if(!s.toString().equalsIgnoreCase("")){
+                     j = i * (s.toString().trim() !=  null ? Integer.parseInt(s.toString().trim()) : 0 );
+                }else{
+                     j = i * 0;
+                }
+
+                binding.tvTotalSalePrice.setText(String.valueOf(j));*/
+
+                Double v1 = Double.parseDouble(!binding.etMineralWeight.getText().toString().isEmpty() ?
+                        binding.etMineralWeight.getText().toString() : "0");
+                Double v2 = Double.parseDouble(!binding.etSalePrice.getText().toString().isEmpty() ?
+                        binding.etSalePrice.getText().toString() : "0");
+                Double value = v1 * v2;
+                binding.tvTotalSalePrice.setText(value.toString());
+
+            }
+        });
     }
 
 
@@ -202,9 +260,10 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
             case R.id.sp_vehicle_type:
                 if (position > 0) {
                     VehicleEntity vehicleEntity = veichelArray.get(position-1);
-                    callVeichelTypeDetailsAPI(vehicleEntity.getVehicleTypeId());
+                    veichleTypeId = vehicleEntity.getVehicleTypeId();
+                    callVehicleTypeDetailsAPI(veichleTypeId);
                 }else{
-                    setVeichleTypeDetails(null);
+                    setVehicleTypeDetails(null);
                 }
                 break;
 
@@ -709,7 +768,7 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
 
                         if (allotmentDetailsResponse.getStatus()) {
                             setAllotmentDetails(response.body().getData().get(0));
-                            setVeichelSpinner(response.body().getVehicle());
+                            setVehicleSpinner(response.body().getVehicle());
                         } else {
                             Toast.makeText(EChallanActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                         }
@@ -730,7 +789,7 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
         });
     }
 
-    private void callVeichelTypeDetailsAPI(String vehicleTypeId) {
+    private void callVehicleTypeDetailsAPI(String vehicleTypeId) {
         String _capId = "";
         String _skey = "";
         String _permitNo = "";
@@ -756,7 +815,7 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
             e.printStackTrace();
         }
         VeichelTypeRequest veichelTypeRequest = new VeichelTypeRequest(_skey,_capId,allotmentNumber,allotmentDetailsResponse.getData().get(0).getMineralTypeId(),allotmentDetailsResponse.getData().get(0).getMineral_Id(),vehicleTypeId);
-        Call<VeichelTypeResponse> call = ApiCall.getSeervice().getVeichelType(veichelTypeRequest);
+        Call<VeichelTypeResponse> call = ApiCall.getSeervice().getVehicleType(veichelTypeRequest);
         call.enqueue(new Callback<VeichelTypeResponse>() {
             @Override
             public void onResponse(@NonNull Call<VeichelTypeResponse> call, @NonNull Response<VeichelTypeResponse> response) {
@@ -770,7 +829,7 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
                         assert response.body() != null;
 
                         if (user.getStatus()) {
-                            setVeichleTypeDetails(response.body().getData().get(0));
+                            setVehicleTypeDetails(response.body().getData().get(0));
                         } else {
                             Toast.makeText(EChallanActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                         }
@@ -790,6 +849,69 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
             }
         });
     }
+
+    private void callVehicleNumberDetailsAPI(String vehicleNumber) {
+        String _capId = "";
+        String _skey = "";
+        String _permitNo = "";
+        String _miniralTypeId = "";
+        String _miniralId = "";
+        String _vehicleTypeId = "";
+
+        dialog.show();
+        encriptor = new Encriptor();
+        try {
+            String randomNo = Utilities.getTimeStamp();
+            String capId = RandomString.randomAlphaNumeric(8);
+            /*_userId = encriptor.Encrypt(miningDetailsEntity.getLesseeId(), randomNo);
+            _userType = encriptor.Encrypt(miningDetailsEntity.getSourceTypeId(), randomNo);
+            _dmo_Id = encriptor.Encrypt(miningDetailsEntity.getDmoID(), randomNo);
+            _endUser_Id = encriptor.Encrypt(miningDetailsEntity.get, randomNo);
+            _endUserType = encriptor.Encrypt(miningDetailsEntity., randomNo);*/
+            _capId = encriptor.Encrypt(capId, randomNo);
+            _skey = encriptor.Encrypt(randomNo, CommonPref.CIPER_KEY);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        VeichleNoDetailsRequest veichleNoDetailsRequest = new VeichleNoDetailsRequest(_skey,_capId,veichleTypeId,vehicleNumber,miningDetailsResponse.getData().get(0).getSourceTypeId(),miningDetailsResponse.getData().get(0).getLesseeId(),allotmentDetailsResponse.getData().get(0).getMineral_Id());
+        Call<VeichleNoDetailsResponse> call = ApiCall.getSeervice().getVehicleDetails(veichleNoDetailsRequest);
+        call.enqueue(new Callback<VeichleNoDetailsResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<VeichleNoDetailsResponse> call, @NonNull Response<VeichleNoDetailsResponse> response) {
+                Log.d("RESPONSE: ", "" + response);
+                VeichleNoDetailsResponse user = new VeichleNoDetailsResponse(response.body());
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+                if (response.code() == 200) {
+                    try {
+                        assert response.body() != null;
+
+                        if (user.getStatus()) {
+                            setVehicleNumberDetails(response.body().getData().get(0));
+                        } else {
+                            setVehicleNumberDetails(response.body().getData().get(0));
+                            Toast.makeText(EChallanActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }else {
+                    Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<VeichleNoDetailsResponse> call, @NonNull Throwable t) {
+
+            }
+        });
+    }
+
 
 
 
@@ -889,7 +1011,7 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
         }*/
     }
 
-    public void setVeichelSpinner(ArrayList<VehicleEntity> data) {
+    public void setVehicleSpinner(ArrayList<VehicleEntity> data) {
         veichelArray = data;
         ArrayList<String> array = new ArrayList<>();
         array.add("-Select-");
@@ -932,13 +1054,29 @@ public class EChallanActivity extends Activity implements AdapterView.OnItemSele
 
           }
 
-    private void setVeichleTypeDetails(VeichelTypeEntity data) {
+    private void setVehicleTypeDetails(VeichelTypeEntity data) {
         binding.tvVeichleCapacity.setText(data != null ?  data.getVehicleCapacity() : "NA");
-        binding.etMineralWeight.setText(data != null ?  data.getMineralWeight(): "NA");
+        binding.etMineralWeight.setText(data != null ?  data.getMineralWeight(): "0");
         binding.etMineralWeight.setEnabled(false);
         binding.etSalePrice.setText("0");
         binding.tvTotalSalePrice.setText("0.00");
         binding.etVehicleNo.setFocusable(true);
+    }
+
+    private void setVehicleNumberDetails(VeichleNoDetailsEntity data) {
+        binding.tvVehicleClass.setText(data.getRc_vh_class_desc());
+        binding.tvLadenWeight.setText(data.getRc_gvw());
+        binding.tvStatus.setText(data.getStautsMessage());
+        binding.tvUnladenWeight.setText(data.getRc_unld_wt());
+        binding.tvRcPermitType.setText(data.getRc_permit_type());
+        binding.tvFitnessValidity.setText(data.getRc_fit_upto());
+        binding.tvRoadTaxValidity.setText(data.getRc_tax_upto());
+        binding.tvInsuranceValidity.setText(data.getRc_insurance_upto());
+        binding.tvRcStatus.setText(data.getRc_status());
+        binding.tvRcPermitNumber.setText(data.getRc_permit_no());
+        binding.tvRcPermitIssueDate.setText(data.getRc_permit_issue_dt());
+        binding.tvRcPermitIssueFrom.setText(data.getRc_permit_valid_from());
+        binding.tvPermitValidityFromVahan.setText(data.getRc_permit_valid_upto());
     }
 
     public void setDeclarationListRecycler(ArrayList<DeclarationEntity> data) {

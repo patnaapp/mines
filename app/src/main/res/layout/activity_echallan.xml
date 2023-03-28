@@ -620,7 +620,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
                             <View
                                 android:id="@+id/view3"
@@ -682,7 +682,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="32dp"
                                         android:layout_marginTop="4dp"
-                                        android:background="@drawable/spinner_bg1" />
+                                        android:background="@drawable/spinner_bg1"
+                                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                                 </LinearLayout>
 
@@ -1172,7 +1173,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="24dp"
                                         android:layout_marginTop="4dp"
-                                        android:background="@drawable/spinner_bg1" />
+                                        android:background="@drawable/spinner_bg1"
+                                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                                 </LinearLayout>
 
@@ -1285,11 +1287,12 @@
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/textboxshape"
                                         android:hint="Vehicle Number"
-                                        android:inputType="number"
+                                        android:inputType="textCapCharacters"
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        tools:ignore="TouchTargetSizeCheck" />
 
                                     <Button
                                         android:layout_width="wrap_content"
@@ -1297,7 +1300,8 @@
                                         android:text="Validate"
                                         android:backgroundTint="@color/color_green"
                                         android:textAllCaps="false"
-                                        android:textColor="@color/white"/>
+                                        android:textColor="@color/white"
+                                        android:id="@+id/btn_validate"/>
 
                                 </LinearLayout>
 
@@ -1371,10 +1375,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="Goods Carrier(HGV)"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_vehicle_class"/>
 
                                 </LinearLayout>
 
@@ -1424,10 +1428,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="35000"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_laden_weight"/>
 
                                 </LinearLayout>
 
@@ -1477,10 +1481,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="OK"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_status"/>
 
                                 </LinearLayout>
 
@@ -1530,10 +1534,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="7730"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_unladen_weight" />
 
                                 </LinearLayout>
 
@@ -1583,10 +1587,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="Goods Permit [HEAVY GOODS VEHICLE]"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_rc_permit_type"/>
 
                                 </LinearLayout>
 
@@ -1636,10 +1640,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="28-Jan-2023"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_fitness_validity"/>
 
                                 </LinearLayout>
 
@@ -1689,10 +1693,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="LTT"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_road_tax_validity" />
 
                                 </LinearLayout>
 
@@ -1742,10 +1746,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="13-Feb-2023"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_insurance_validity"/>
 
                                 </LinearLayout>
 
@@ -1795,10 +1799,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="ACTIVE"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_rc_status" />
 
                                 </LinearLayout>
 
@@ -1848,10 +1852,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="BR2022-GP-2574D"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_rc_permit_number"/>
 
                                 </LinearLayout>
 
@@ -1901,10 +1905,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="05-Dec-2022"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_rc_permit_issue_date" />
 
                                 </LinearLayout>
 
@@ -1954,10 +1958,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="05-Dec-2022"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_rc_permit_issue_from" />
 
                                 </LinearLayout>
 
@@ -2007,10 +2011,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:text="04-Dec-2027"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="12sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+                                        android:id="@+id/tv_permit_validity_from_vahan"  />
 
                                 </LinearLayout>
 
@@ -2094,7 +2098,7 @@
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/textboxshape"
                                         android:hint="Transporter Name"
-                                        android:inputType="number"
+                                        android:inputType="textPersonName"
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
@@ -2162,7 +2166,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="10"/>
 
                                 </LinearLayout>
 
@@ -2222,7 +2227,7 @@
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/textboxshape"
                                         android:hint="Driver Name"
-                                        android:inputType="number"
+                                        android:inputType="textPersonName"
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
@@ -2290,7 +2295,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="10"/>
 
                                 </LinearLayout>
 
@@ -2604,7 +2610,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:visibility="gone">
+                            android:visibility="visible">
 
                             <View
                                 android:layout_width="wrap_content"
@@ -2854,7 +2860,7 @@
                                         android:layout_height="wrap_content"
                                         android:background="@drawable/textboxshape"
                                         android:hint="Consignee Name"
-                                        android:inputType="number"
+                                        android:inputType="textPersonName"
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
@@ -2923,7 +2929,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="50"/>
 
                                 </LinearLayout>
 
@@ -2988,7 +2995,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="50"/>
 
                                 </LinearLayout>
 
@@ -3052,7 +3060,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="6"/>
 
                                 </LinearLayout>
 
@@ -3173,7 +3182,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="10"/>
 
                                 </LinearLayout>
 
@@ -3237,7 +3247,8 @@
                                         android:padding="5dp"
                                         android:singleLine="true"
                                         android:textColor="@color/colorPrimary"
-                                        android:textSize="12sp" />
+                                        android:textSize="12sp"
+                                        android:maxLength="12"/>
 
                                 </LinearLayout>
 
